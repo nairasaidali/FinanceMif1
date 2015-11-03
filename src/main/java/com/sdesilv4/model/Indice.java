@@ -1,45 +1,16 @@
+package com.sdesilv4.model;
 
+import java.util.Date;
 
-//classe Actif
-public abstract classe Actif{
-private string Nom;
-private double Valeur;
-private string Date;
-private long Volume;
-private long CodeISIN;
- }
- // Classe Indice(héritant de la classe Actif)
-public classe Indice extends Actif{
-
-public Indice(){}
-
-public Indice(string Nom,double Valeur,string Date,long Volume,long CodeISIN)
+public class Indice extends Actif
 {
-this.Nom= super.Nom;
-this.Valeur=super.Valeur;
-this.Date=super.Date;
-this.Volume=super.Volume;
-this.CodeISIN=super.codeISIN;
+ public Indice(String _nom, String _codeISIN, double _prix, long _volume, Date _date) {
+  super(_nom, _codeISIN, _prix, _volume, _date);
+ }
+
+
 }
 
-//GET
-public string getNom(){
-return this.Nom;
-}
-public string getValeur(){
-return this.Valeur;
-}
 
-public string getDate(){
-return this.Date;
-}
 
-public string getVolume(){
-return this.Volume;
-}
-
-public string getcodeISIN(){
-return this.codeISIN;
-}
-}
 

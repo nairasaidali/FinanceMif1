@@ -1,6 +1,5 @@
 package com.sdesilv4.gui;
 
-<<<<<<< HEAD
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,30 +17,30 @@ import javax.swing.JFrame;
  * Created by sonia on 02/11/2015.
  */
 
-public class FinanceApp{
+public class FinanceApp {
     public static void main(String[] args) {
 
-        //***** Création *****//
-        //Créer une fenêtre
+        //***** Crï¿½ation *****//
+        //Crï¿½er une fenï¿½tre
         JFrame fenetre = new JFrame();
-        //Créer une ComboBox pour Action et Indice
+        //Crï¿½er une ComboBox pour Action et Indice
         JComboBox comboBoxCACSBF = new JComboBox();
-        //Créer un Label pour le ComboBox
+        //Crï¿½er un Label pour le ComboBox
         JLabel label = new JLabel("Indices : ");
-        //Créer un Bouton pour valider le choix du ComboBox
+        //Crï¿½er un Bouton pour valider le choix du ComboBox
         JButton bouton = new JButton("Valider");
-        //Créer un container
+        //Crï¿½er un container
         JPanel container = new JPanel();
 
         fenetre.setVisible(true);
 
-        // Définit le titre de la fenêtre
+        // Dï¿½finit le titre de la fenï¿½tre
         fenetre.setTitle("Projet Finance");
 
-        // Définit taille de la fenêtre
+        // Dï¿½finit taille de la fenï¿½tre
         fenetre.setSize(500, 500);
 
-        //Nous demandons maintenant à notre objet de se positionner au centre
+        //Nous demandons maintenant ï¿½ notre objet de se positionner au centre
         fenetre.setLocationRelativeTo(null);
 
         //Termine le processus lorsqu'on clique sur la croix rouge
@@ -71,7 +70,7 @@ public class FinanceApp{
         //Taille Bouton
         bouton.setPreferredSize(new Dimension(75, 20));
 
-        //Ajouter éléments dans la liste
+        //Ajouter ï¿½lï¿½ments dans la liste
         comboBoxCACSBF.addItem("Choisir l'indice");
         comboBoxCACSBF.addItem("CAC 40");
         comboBoxCACSBF.addItem("SBF 120");
@@ -79,10 +78,8 @@ public class FinanceApp{
         //Couleur de la ComboBox
         comboBoxCACSBF.setBackground(Color.white);
     }
-=======
+}
 /**
  * Created by sonia on 02/11/2015.
  */
-public class FinanceApp {
->>>>>>> 354e4c603fc701677506661d35d1de23b739920a
-}
+

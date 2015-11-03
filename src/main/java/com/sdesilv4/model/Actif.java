@@ -1,3 +1,5 @@
+package com.sdesilv4.model;
+
 import java.util.Date;
 
 abstract class Actif {
@@ -26,22 +28,14 @@ abstract class Actif {
     }
 
 
-    public void setPrix(double valeur){
-        prix = valeur;
-    }
-    public void setDate(Date valeur){
-        date = valeur;
-    }
-    public void setVolume(long valeur){
-        volume = valeur;
-    }
 
 
-    public Actif(String Nom, String CodeISIN, double Prix, long Volume, Date Date){
-        Nom = this.getNom();
-        CodeISIN = this.getCodeISIN();
-        Prix = this.getPrix();
-        Volume = this.getVolume();
-        Date = this.getDate();
+
+    public Actif(String _nom, String _codeISIN, double _prix, long _volume, Date _date){
+        _nom = this.getNom();
+        _codeISIN = this.getCodeISIN();
+        _prix = this.getPrix();
+        _volume = this.getVolume();
+        _date = this.getDate();
     }
 }
