@@ -5,26 +5,27 @@ package com.sdesilv4.model;
 
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Action extends Actif{
 
-    private double poids;
     private double volatility;
     private double cap_boursiere;
     private double PER;
+    Map<Indice, Object> dictionary;
 
-    public Action(String _nom, String _codeISIN, double _prix, long _volume, Date _date, double _poids, double _volatility, double _cap_boursiere, double _PER)
-    {
+    public Action(String _nom, String _codeISIN, double _prix, long _volume, Date _date, double _volatility, double _cap_boursiere, double _PER) {
         super(_nom, _codeISIN, _prix, _volume, _date);
-        this.poids = _poids;
         this.volatility = _volatility;
         this.cap_boursiere = _cap_boursiere;
         this.PER = _PER;
+        dictionary = new HashMap<Indice, Object>();
     }
 
-    public double getPoids()
+    public Map<Indice, Object> getdictionary()
     {
-        return this.poids;
+        return this.dictionary;
     }
 
     public double getVolatility()
@@ -62,12 +63,17 @@ public class Action extends Actif{
 //        this.cap_boursiere = _cap_boursiere;
 //    }
 
+    public void addIndiceWeight(Indice i, double p)
+    {
+        dictionary.put(i,p);
+    }
+
     public String toString()
     {
         String chaine;
         chaine =  "L'action est caracterisee par:" ;
         chaine += "\n";
-        chaine += "- Poids: " + this.poids;
+       // chaine += "- Poids: " + this.poids;
         chaine += "\n";
         chaine += "- Volatilite: " + this.volatility;
         chaine += "\n";
