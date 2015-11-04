@@ -17,17 +17,21 @@ public class Indice extends Actif {
   collectionIndicePonderes.add(a);
  }
 
- public String ToString() {
+ public String toString() {
   String out = "L'indice est " + this.getNom();
   out += ", le code ISIN est : " + this.getCodeISIN();
   out += ", le prix est : " + this.getPrix();
-  out += ", il contient les actions suivantes";
+  out += ", il contient les actions suivantes ";
+  out+= "\n";
 
-  for (Action i : this.collectionIndicePonderes) {
+  for (Action i : this.collectionIndicePonderes)
+  {
    out += i.toString();
+   out+= "\n";
   }
-  return "a";
+  return out;
  }
+
 }
 
 

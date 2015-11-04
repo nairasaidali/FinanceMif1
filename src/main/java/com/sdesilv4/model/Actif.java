@@ -11,31 +11,27 @@ abstract class Actif {
     private Date date;
 
 
+    public Actif(String _nom, String _codeISIN, double _prix, long _volume, Date _date){
+        this.nom =_nom;
+        this.codeISIN=_codeISIN;
+        this.prix=_prix;
+        this.volume = _volume;
+        this.date= _date;
+    }
+
     public String getNom(){
-        return nom;
+        return this.nom;
     }
     public String getCodeISIN(){
-        return codeISIN;
+        return this.codeISIN;
     }
     public double getPrix(){
-        return prix;
+        return this.prix;
     }
     public long getVolume(){
-        return volume;
+        return this.volume;
     }
     public Date getDate(){
-        return date;
-    }
-
-
-
-
-
-    public Actif(String _nom, String _codeISIN, double _prix, long _volume, Date _date){
-        _nom = this.getNom();
-        _codeISIN = this.getCodeISIN();
-        _prix = this.getPrix();
-        _volume = this.getVolume();
-        _date = this.getDate();
+        return this.date;
     }
 }

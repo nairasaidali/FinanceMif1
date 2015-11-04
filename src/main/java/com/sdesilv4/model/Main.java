@@ -9,6 +9,8 @@ public class Main {
     public static void main(String[] args)
     {
         Action a = new Action("ESILV", "FR24512154651", -5.5, 5122121, new Date(),5,41,1);
-        System.out.println(a.toString());
+        Indice i = new Indice("Blague", "FR21213135",23,65+65,new Date());
+        i.addACtion(a,6);
+        System.out.println(i.toString());
     }
 }

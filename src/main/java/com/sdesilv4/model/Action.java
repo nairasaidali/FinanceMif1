@@ -75,9 +75,10 @@ public class Action extends Actif{
     public String toString()
     {
         String chaine;
-        chaine =  "L'action est caracterisee par:" ;
+        chaine =  "-- L'action est caracterisée par:" ;
         chaine += "\n";
-       // chaine += "- Poids: " + this.poids;
+        chaine += "- Nom: " + this.getNom();
+        // chaine += "- Poids: " + this.poids;
         chaine += "\n";
         chaine += "- Volatilite: " + this.volatility;
         chaine += "\n";
