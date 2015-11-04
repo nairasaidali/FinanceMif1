@@ -65,9 +65,13 @@ public class Action extends Actif{
 
     public void addIndiceWeight(Indice i, double p)
     {
-        dictionary.put(i,p);
+        dictionary.put(i, p);
     }
 
+    public void poids(Indice i)
+    {
+        System.out.println(dictionary.get(i));
+    }
     public String toString()
     {
         String chaine;
