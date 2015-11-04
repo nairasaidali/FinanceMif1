@@ -15,9 +15,11 @@ public class Indice extends Actif
 
  public void addACtion(Action a, double weight)
  {
-
+  a.addIndiceWeight(this,weight);
+  collectionIndicePonderes.add(a);
  }
-//gjgjkbkjbkjb
+
+
 
 }
 
