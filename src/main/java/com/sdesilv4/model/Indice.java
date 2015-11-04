@@ -19,12 +19,18 @@ public class Indice extends Actif
   collectionIndicePonderes.add(a);
  }
 
-public String ToString()
-{
- String out = "L'indice est ";
-         out+= this.getNom();
+ public String ToString()
+ {
+  String out = "L'indice est " + this.getNom();
+  out+=   ", le code ISIN est : " + this.getCodeISIN();
+  out+= ", le prix est : " + this.getPrix();
+  out+= ", il contient les actions suivantes";
 
-}
+  for(Action i: this.collectionIndicePonderes){
+   out += i.toString();
+  }
+
+ }
 
 }
 
