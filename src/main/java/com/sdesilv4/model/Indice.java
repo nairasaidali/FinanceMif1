@@ -19,7 +19,12 @@ public class Indice extends Actif
   collectionIndicePonderes.add(a);
  }
 
+public String ToString()
+{
+ String out = "L'indice est ";
+         out+= this.getNom();
 
+}
 
 }
 
