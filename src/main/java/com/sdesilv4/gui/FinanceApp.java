@@ -39,6 +39,8 @@ public class FinanceApp {
 
         // D�finit taille de la fen�tre
         fenetre.setSize(500, 500);
+        //Empêche la redimension de la fenêtre
+        fenetre.setResizable(false);
 
         //Nous demandons maintenant � notre objet de se positionner au centre
         fenetre.setLocationRelativeTo(null);
@@ -79,7 +81,24 @@ public class FinanceApp {
         comboBoxCACSBF.setBackground(Color.white);
 
 
-        //essaie guit
+        // Déclaration manuelle des valeurs du tableau des actions
+        Object[][] actionData = {
+                {"dg","dsh","dsh", "dsh", "sdg", "sdg"},
+                {"dg","dsh","dsh", "dsh", "sdg", "sdg"},
+                {"dg","dsh","dsh", "dsh", "sdg", "sdg"},
+                {"dg","dsh","dsh", "dsh", "sdg", "sdg"},
+                {"dg","dsh","dsh", "dsh", "sdg", "sdg"}
+        };
+        String actionTitle[] = {"Nom", "Valeur", "Poids", "Ticher", "Prix", "Date d'evaluation"};
+        JTable tableauAction = new JTable(actionData, actionTitle);
+        fenetre.getContentPane().add(new JScrollPane(tableauAction));
+        tableauAction.setVisible(true);
+        fenetre.setSize(700, 250);
+
+        // Couleur du tableau
+        tableauAction.setBackground(Color.white);
+        fenetre.setTitle("Recapitulatif Actions");
+
     }
 }
 /**
