@@ -4,6 +4,7 @@
 package com.sdesilv4.model;
 
 
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +22,10 @@ public class Action extends Actif{
         this.cap_boursiere = _cap_boursiere;
         this.PER = _PER;
         dictionary = new HashMap<Indice, Object>();
+
+
+
+
     }
 
     public Map<Indice, Object> getdictionary()
