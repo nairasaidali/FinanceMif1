@@ -72,7 +72,7 @@ public class MongoDB {
         catch (Exception e)
         { return e.getMessage();}
 
-        return "action bien ajoute";
+        return "indice bien ajoute";
 
     }
 }
