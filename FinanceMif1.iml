@@ -33,5 +33,6 @@
     <orderEntry type="library" name="Maven: org.mongodb:bson:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-core:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20150729" level="project" />
+    <orderEntry type="library" name="Maven: junit:junit:4.4" level="project" />
   </component>
 </module>

@@ -27,11 +27,11 @@
 					
 					var results = compQuery.results;
 					var components = <components></components>;
-					for each (var a in results.a) {
+					for each (var a in results.a) 
+					{
 						var symbol = a.text().toString().replace(/\s+/g, "");
 						components.appendChild(<component>{symbol}</component>);
-					}
-					
+					}					
 					response.object = components;
 				]]>
 			</execute>

@@ -1,7 +1,6 @@
 package com.sdesilv4.Controller;
 
 import com.sdesilv4.model.Indice;
-import org.bson.json.JsonReader;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -30,14 +29,14 @@ public class ControllerGestionIndice {
         getListOfSymbols();
     }
 
-    private String makeHttpsGetIndexComponentsJson()
+    public String makeHttpsGetIndexComponentsJson()
     {
         String url = "https://query.yahooapis.com/v1/public/yql?q=use%20'https%3A%2F%2Fraw.githubusercontent.com%2FSoniaDjebali%2FFinanceMif1%2Fmaster%2Fyahoo.finance.components.xml'%20as%20mytable%3B%0Aselect%20*%20from%20mytable%20where%20symbol%3D'%5E" + this.symbolIndex + "'%3B&format=json&diagnostics=true&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback=";
         try {
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-            // optional default is GET
+            //optional default is GET
             con.setRequestMethod("GET");
 
             int responseCode = con.getResponseCode();
@@ -48,7 +47,8 @@ public class ControllerGestionIndice {
             String inputLine;
             StringBuffer response = new StringBuffer();
 
-            while ((inputLine = in.readLine()) != null) {
+            while ((inputLine = in.readLine()) != null)
+            {
                 response.append(inputLine);
             }
             in.close();
@@ -60,7 +60,7 @@ public class ControllerGestionIndice {
 
     }
 
-    private List<String> getListOfSymbols()
+    public List<String> getListOfSymbols()
     {
         JSONObject obj = new JSONObject(makeHttpsGetIndexComponentsJson());
 
