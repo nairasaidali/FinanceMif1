@@ -103,7 +103,7 @@ public class MongoDB {
             Double cap_boursiere = (Double) g.first().get("cap_boursiere");
             Double PER = (Double) g.first().get("PER");
 
-            Action act = new Action (name,codeISIN,prix,volume,date,volatility,cap_boursiere,PER);
+            Action act = new Action (name,codeISIN,prix,volume,date,"symbol",volatility,cap_boursiere,PER);    //symbol a compléter !!
             return act;
         }
         catch(Exception e) {
@@ -130,7 +130,7 @@ public class MongoDB {
             Long volume = (Long) g.first().get("volume");
             Double volatility = (Double) g.first().get("volatility");
 
-            Indice ind = new Indice(name,codeISIN,prix,volume,date);
+            Indice ind = new Indice(name,codeISIN,prix,volume,date , "symbol !! "); //symbol a compléter !!
             return ind;
         }
         catch(Exception e) {

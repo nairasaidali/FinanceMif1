@@ -6,17 +6,19 @@ abstract class Actif {
 
     private String nom;
     private String codeISIN;
+    private String symbol;
     private double prix;
     private long volume;
     private Date date;
 
 
-    public Actif(String _nom, String _codeISIN, double _prix, long _volume, Date _date){
+    public Actif(String _nom, String _codeISIN, double _prix, long _volume, Date _date, String _symbol){
         this.nom =_nom;
         this.codeISIN=_codeISIN;
         this.prix=_prix;
         this.volume = _volume;
         this.date= _date;
+        this.symbol = _symbol;
     }
 
     public String getNom(){
@@ -33,5 +35,8 @@ abstract class Actif {
     }
     public Date getDate(){
         return this.date;
+    }
+    public String getSymbol(){
+        return this.symbol;
     }
 }
