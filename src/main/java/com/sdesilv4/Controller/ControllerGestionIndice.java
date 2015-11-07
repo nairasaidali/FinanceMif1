@@ -30,10 +30,9 @@ public class ControllerGestionIndice {
         getListOfSymbols();
     }
 
-    private String makeHttpsGetIndexComponentsJson(String symbolIndex)
+    private String makeHttpsGetIndexComponentsJson()
     {
-        String url = "https://query.yahooapis.com/v1/public/yql?q=use%20'https%3A%2F%2Fraw.githubusercontent.com%2Fphilippn%2Fyql-tables%2Fmaster%2Fyahoo.finance.components.xml'%20as%20mytable%3B%0Aselect%20*%20from%20mytable%20where%20symbol%3D'%5E" + symbolIndex + "'%3B&format=json&diagnostics=true&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback=";
-        String outPutJson;
+        String url = "https://query.yahooapis.com/v1/public/yql?q=use%20'https%3A%2F%2Fraw.githubusercontent.com%2FSoniaDjebali%2FFinanceMif1%2Fmaster%2Fyahoo.finance.components.xml'%20as%20mytable%3B%0Aselect%20*%20from%20mytable%20where%20symbol%3D'%5E" + this.symbolIndex + "'%3B&format=json&diagnostics=true&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback=";
         try {
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -53,17 +52,17 @@ public class ControllerGestionIndice {
                 response.append(inputLine);
             }
             in.close();
-            outPutJson = response.toString();
+            System.out.println(response.toString());
+            return response.toString();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(outPutJson);
-        return outPutJson;
+
     }
 
     private List<String> getListOfSymbols()
     {
-        JSONObject obj = new JSONObject(makeHttpsGetIndexComponentsJson(symbolIndex));
+        JSONObject obj = new JSONObject(makeHttpsGetIndexComponentsJson());
 
         List<String> list = new ArrayList<String>();
         JSONObject query = obj.getJSONObject("query");
