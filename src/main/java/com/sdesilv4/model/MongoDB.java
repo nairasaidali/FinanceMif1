@@ -50,19 +50,6 @@ public class MongoDB {
             coll.insertOne(doc);
 
 
-
-            /*MongoClient mongoClient = new MongoClient();
-            MongoDatabase db = mongoClient.getDatabase("actif");
-            MongoCollection<Document> coll = db.getCollection("action");
-            Document doc = new Document().append("name", act.getNom())
-                    .append("codeISIN", act.getCodeISIN())
-                    .append("prix", act.getPrix())
-                    .append("date",act.getDate())
-                    .append("volatility", act.getVolatility())
-                    .append("volume",act.getVolume())
-                    .append("cap_boursiere", act.getCapBoursiere())
-                    .append("PER", act.getPER());
-            db.getCollection("action").insertOne(doc);*/
         }
         catch (Exception e)
         { return e.getMessage();}
@@ -75,15 +62,19 @@ public class MongoDB {
     {
         try
         {
-            MongoClient mongoClient = new MongoClient();
-            MongoDatabase db = mongoClient.getDatabase("actif");
-            MongoCollection<Document> coll = db.getCollection("indice");
+            String uriString = "mongodb://groupeMif1:groupeMif1@ds051524.mongolab.com:51524/actif";
+            MongoClientURI uri = new MongoClientURI(uriString);
+            MongoClient client = new MongoClient((uri));
+            MongoDatabase db = client.getDatabase(uri.getDatabase());
+            MongoCollection coll = db.getCollection("indice");
+
+
             Document doc = new Document().append("name", ind.getNom())
                     .append("codeISIN", ind.getCodeISIN())
                     .append("prix", ind.getPrix())
                     .append("date",ind.getDate())
                     .append("volume", ind.getVolume());
-            db.getCollection("action").insertOne(doc);
+            coll.insertOne(doc);
         }
         catch (Exception e)
         { return e.getMessage();}
@@ -96,9 +87,12 @@ public class MongoDB {
     {
         try
         {
-            MongoClient mongoClient = new MongoClient();
-            MongoDatabase db = mongoClient.getDatabase("actif");
-            MongoCollection<Document> coll = db.getCollection("action");
+            String uriString = "mongodb://groupeMif1:groupeMif1@ds051524.mongolab.com:51524/actif";
+            MongoClientURI uri = new MongoClientURI(uriString);
+            MongoClient client = new MongoClient((uri));
+            MongoDatabase db = client.getDatabase(uri.getDatabase());
+            MongoCollection coll = db.getCollection("action");
+
             FindIterable<Document> g = coll.find(new Document("codeISIN", CodeISIN));
             String name = (String) g.first().get("name");
             String codeISIN = (String) g.first().get("codeISIN");
@@ -108,6 +102,7 @@ public class MongoDB {
             Double volatility = (Double) g.first().get("volatility");
             Double cap_boursiere = (Double) g.first().get("cap_boursiere");
             Double PER = (Double) g.first().get("PER");
+
             Action act = new Action (name,codeISIN,prix,volume,date,volatility,cap_boursiere,PER);
             return act;
         }
@@ -121,9 +116,12 @@ public class MongoDB {
     {
         try
         {
-            MongoClient mongoClient = new MongoClient();
-            MongoDatabase db = mongoClient.getDatabase("actif");
-            MongoCollection<Document> coll = db.getCollection("indice");
+            String uriString = "mongodb://groupeMif1:groupeMif1@ds051524.mongolab.com:51524/actif";
+            MongoClientURI uri = new MongoClientURI(uriString);
+            MongoClient client = new MongoClient((uri));
+            MongoDatabase db = client.getDatabase(uri.getDatabase());
+            MongoCollection coll = db.getCollection("indice");
+
             FindIterable<Document> g = coll.find(new Document("codeISIN", CodeISIN));
             String name = (String) g.first().get("name");
             String codeISIN = (String) g.first().get("codeISIN");
@@ -142,9 +140,12 @@ public class MongoDB {
 
     public String UpdateAction(Action act) {
         try {
-            MongoClient mongoClient = new MongoClient();
-            MongoDatabase db = mongoClient.getDatabase("actif");
-            MongoCollection<Document> coll = db.getCollection("action");
+            String uriString = "mongodb://groupeMif1:groupeMif1@ds051524.mongolab.com:51524/actif";
+            MongoClientURI uri = new MongoClientURI(uriString);
+            MongoClient client = new MongoClient((uri));
+            MongoDatabase db = client.getDatabase(uri.getDatabase());
+            MongoCollection coll = db.getCollection("action");
+
             Document doc = new Document().append("name", act.getNom())
                     .append("codeISIN", act.getCodeISIN())
                     .append("prix", act.getPrix())
@@ -166,9 +167,12 @@ public class MongoDB {
 
     public String UpdateIndice(Indice ind) {
         try {
-            MongoClient mongoClient = new MongoClient();
-            MongoDatabase db = mongoClient.getDatabase("actif");
-            MongoCollection<Document> coll = db.getCollection("indice");
+            String uriString = "mongodb://groupeMif1:groupeMif1@ds051524.mongolab.com:51524/actif";
+            MongoClientURI uri = new MongoClientURI(uriString);
+            MongoClient client = new MongoClient((uri));
+            MongoDatabase db = client.getDatabase(uri.getDatabase());
+            MongoCollection coll = db.getCollection("indice");
+
             Document doc = new Document().append("name", ind.getNom())
                     .append("codeISIN", ind.getCodeISIN())
                     .append("prix", ind.getPrix())
