@@ -22,6 +22,6 @@ public class Main {
         i.addACtion(a2,6);
         System.out.println(i.toString());
 
-        ControllerGestionIndice CGi = new ControllerGestionIndice("FCHI");
+        ControllerGestionIndice CGi = new ControllerGestionIndice("FCHI");      //Symbole sans le ^ devant
     }
 }

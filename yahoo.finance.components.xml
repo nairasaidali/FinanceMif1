@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
+	<meta>
+		<author>Nico GHE &lt;admettons@gmail.com&gt;</author>
+		<description>Yahoo Finance Index components</description>
+		<sampleQuery>select * from {table} where symbol="^gdaxi"</sampleQuery>
+		<sampleQuery>select * from {table}(0, 500) where symbol="^ixic"</sampleQuery>
+	</meta>
+	<bindings>
+		<select itemPath="components.component" produces="XML">
+			<inputs>
+				<key id="symbol" type="xs:string" paramType="query" required="true" />
+			</inputs>
+			<paging model="page">
+				<start id="page" default="0" />
+				<pagesize max="50" />
+				<total default="50" />
+			</paging>
+			<execute>
+				<![CDATA[
+					var url = "https://finance.yahoo.com/q/cp?s=" + symbol +
+							"+Components&c=" + page;
+					var compQuery = y.query("select content from html " +
+							"where url=@url and compat='html5' and " +
+							"xpath='//a[starts-with(@href, \"/q?s=\") and parent::b]'",
+							{url:url});
+					
+					var results = compQuery.results;
+					var components = <components></components>;
+					for each (var a in results.a) {
+						var symbol = a.text().toString().replace(/\s+/g, "");
+						components.appendChild(<component>{symbol}</component>);
+					}
+					
+					response.object = components;
+				]]>
+			</execute>
+		</select>
+	</bindings>
+</table>
