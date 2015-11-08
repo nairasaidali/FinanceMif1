@@ -29,10 +29,9 @@ public class ControllerGestionIndice {
         this.symbolIndex = _symbolIndex;
         this.listAction = new ArrayList<Action>();
 
-        getListOfActionObjects( getListOfSymbols());
+        getListOfActionObjects(getListOfSymbols());
         ReparitionDesPoids();
         IndexCreation();
-        System.out.println(indice.toString());
     }
 
     public String httsGetMethodJson(String query)
@@ -98,6 +97,7 @@ public class ControllerGestionIndice {
             }
         }
         String HttpRequest = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(" + requeteStocks +")&format=json&diagnostics=true&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback=";
+
         JSONObject obj = new JSONObject(httsGetMethodJson(HttpRequest));
         JSONObject query = obj.getJSONObject("query");
         JSONObject results = query.getJSONObject("results");
@@ -142,6 +142,7 @@ public class ControllerGestionIndice {
         {
             a.addIndiceWeight(symbolIndex,a.getCapBoursiere()/globalMarketCapIndex);
         }
+
     }
 
     public void IndexCreation()
@@ -165,12 +166,16 @@ public class ControllerGestionIndice {
         double MarketCap = 0;
       //  if (!array.getJSONObject(i).isNull("MarketCapitalization"))
 
-
         this.indice = new Indice(Name,ISIN,prix,volume,date,symbol);
         for (Action a : listAction)
         {
             this.indice.addACtion(a,a.GetWeight(symbolIndex));
         }
+    }
+
+    public Indice GetIndex()
+    {
+        return this.indice;
     }
 }
 

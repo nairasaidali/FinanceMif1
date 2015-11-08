@@ -45,26 +45,6 @@ public class Action extends Actif{
         return this.cap_boursiere;
     }
 
-//    public void setPoids(double _poids)
-//    {
-//        this.poids = _poids;
-//    }
-//
-//    public void setVolatility(double _volatility)
-//    {
-//        this.volatility = _volatility ;
-//    }
-//
-//    public void setPER(double _PER)
-//    {
-//        this.PER = _PER;
-//    }
-//
-//    public void setCapBoursiere(double _cap_boursiere)
-//    {
-//        this.cap_boursiere = _cap_boursiere;
-//    }
-
     public void addIndiceWeight(String indexSymbol, double p)
     {
         dictionary.put(indexSymbol, p);

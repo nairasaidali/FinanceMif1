@@ -2,6 +2,7 @@ package com.sdesilv4.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 public class Indice extends Actif {
@@ -12,9 +13,14 @@ public class Indice extends Actif {
   this.collectionIndicePonderes = new ArrayList<Action>();
  }
 
- public void addACtion(Action a, double weight) {
-  a.addIndiceWeight(this.getSymbol(), weight);
+ public void addACtion(Action a, double weight)
+ {
   collectionIndicePonderes.add(a);
+ }
+
+ public List<Action> GetCollectionAction()
+ {
+  return this.collectionIndicePonderes;
  }
 
  public String toString() {

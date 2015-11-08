@@ -1,8 +1,7 @@
 package com.sdesilv4.model;
 
 import com.sdesilv4.Controller.ControllerGestionIndice;
-
-import java.util.Date;
+import com.sdesilv4.Controller.MongoDBClient;
 
 /**
  * Created by Nicolas on 03/11/15.
@@ -10,11 +9,12 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args)
     {
-////        MongoDB tst = new MongoDB();
-////        String z = tst.AddAction(a);
-////        String b = tst.AddIndice(i);
 
         ControllerGestionIndice CGi = new ControllerGestionIndice("FCHI");      //Symbole sans le ^ devant
+        System.out.println(CGi.GetIndex().toString());
+
+        MongoDBClient tst = new MongoDBClient("mongodb://groupeMif1:groupeMif1@ds051524.mongolab.com:51524/actif");
+       tst.AddActionCollection(CGi.GetIndex().GetCollectionAction());
 
     }
 }
