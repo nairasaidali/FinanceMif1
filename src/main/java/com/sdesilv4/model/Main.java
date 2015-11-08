@@ -10,12 +10,12 @@ public class Main {
     public static void main(String[] args)
     {
 
-        ControllerGestionIndice CGi = new ControllerGestionIndice("GDAXI");      //Symbole sans le ^ devant
+        ControllerGestionIndice CGi = new ControllerGestionIndice("FCHI");      //Symbole sans le ^ devant
         System.out.println(CGi.GetIndex().toString());
 
         MongoDBClient tst = new MongoDBClient("mongodb://groupeMif1:groupeMif1@ds051524.mongolab.com:51524/actif");
         tst.AddIndice(CGi.GetIndex());
-
+        tst.CloseClientConnection();
 
     }
 }
