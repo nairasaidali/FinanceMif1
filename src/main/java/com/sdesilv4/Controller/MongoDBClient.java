@@ -106,13 +106,21 @@ public class MongoDBClient
         try
         {
             MongoCollection coll = db.getCollection("indice");
+            List<Document> listSymbolAction = new ArrayList<Document>();
+            for (Action a : ind.GetCollectionAction())
+            {
+                listSymbolAction.add(new Document("symbol", a.getSymbol()).append("name",a.getNom()).append("price" , a.getPrix()));
+            }
 
             Document doc = new Document().append("name", ind.getNom())
                     .append("codeISIN", ind.getCodeISIN())
                     .append("prix", ind.getPrix())
                     .append("date",ind.getDate())
-                    .append("volume", ind.getVolume());
+                    .append("volume", ind.getVolume())
+                    .append("components", listSymbolAction);
+
             coll.insertOne(doc);
+            AddActionCollection(ind.GetCollectionAction());
         }
         catch (Exception e)
         {  System.out.println(e.getMessage());}

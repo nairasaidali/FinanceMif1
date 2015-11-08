@@ -11,7 +11,6 @@ import static org.junit.Assert.*;
  */
 public class ControllerGestionIndiceTest {
     ControllerGestionIndice cgi = new ControllerGestionIndice("FCHI");
-    List<String> listAction;
 
     @Test
     public void testGetListOfSymbols() throws Exception
