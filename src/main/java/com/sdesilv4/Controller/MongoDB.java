@@ -1,7 +1,9 @@
-package com.sdesilv4.model;
+package com.sdesilv4.Controller;
 import com.mongodb.*;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.sdesilv4.model.Action;
+import com.sdesilv4.model.Indice;
 import org.bson.Document;
 import com.mongodb.MongoURI;
 
