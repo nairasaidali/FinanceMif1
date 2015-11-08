@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by Nicolas on 07/11/15.
@@ -20,36 +22,28 @@ public class ControllerGestionAction {
         this.symbolAction = _symbol;
         action = null;
     }
-
-    public String makeHttpsGetIndexComponentsJson()
+    static double MarketCapt(String symbol)
     {
-        String url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22YHOO%22%2C%22AAPL%22%2C%22GOOG%22%2C%22MSFT%22)&format=json&diagnostics=true&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback=";
-        try {
-            URL obj = new URL(url);
-            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        double billion = 1000000000;
 
-            //optional default is GET
-            con.setRequestMethod("GET");
-
-            int responseCode = con.getResponseCode();
-            System.out.println("\nSending 'GET' request to URL : " + url);
-            System.out.println("Response Code : " + responseCode);
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-
-            while ((inputLine = in.readLine()) != null)
-            {
-                response.append(inputLine);
-            }
-            in.close();
-            System.out.println(response.toString());
-            return response.toString();
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
+        if (symbol.equals("AIR.PA"))
+            return 50.89*billion;
+        else if (symbol.equals("LG.PA"))
+            return 17.319*billion;
+        else if (symbol.equals("MT.PA"))
+            return 8.327*billion;
+        else if (symbol.equals("SOLB.PA"))
+            return 8.86*billion;
+        else if (symbol.equals("UL.PA"))
+            return 24.31516*billion;
+        else
+        {
+            System.out.println("The market cap is not available on Yahoo Finance, please enter it manually (in billion) for : " + symbol);
+            Scanner scanner = new Scanner(System.in);
+            return Double.parseDouble(scanner.nextLine())*1000000000;
         }
 
     }
 }
+
+

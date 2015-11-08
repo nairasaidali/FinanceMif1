@@ -13,7 +13,7 @@ public class Indice extends Actif {
  }
 
  public void addACtion(Action a, double weight) {
-  a.addIndiceWeight(this, weight);
+  a.addIndiceWeight(this.getSymbol(), weight);
   collectionIndicePonderes.add(a);
  }
 
@@ -24,9 +24,11 @@ public class Indice extends Actif {
   out += ", il contient les actions suivantes ";
   out+= "\n";
 
-  for (Action i : this.collectionIndicePonderes)
+  for (Action a : this.collectionIndicePonderes)
   {
-   out += i.toString();
+   out += "---";
+   out+= a.getNom();
+   out+= "| PRIX : "+ a.getPrix();
    out+= "\n";
   }
   return out;
