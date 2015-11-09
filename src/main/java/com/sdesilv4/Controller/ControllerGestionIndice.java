@@ -9,8 +9,10 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.HttpURLConnection;
+import java.net.URLEncoder;
 import java.util.*;
 
 /**
@@ -67,8 +69,13 @@ public class ControllerGestionIndice {
 
     public List<String> getListOfSymbols()
     {
-        String url = "https://query.yahooapis.com/v1/public/yql?q=use%20'https%3A%2F%2Fraw.githubusercontent.com%2FSoniaDjebali%2FFinanceMif1%2Fmaster%2Fyahoo.finance.components.xml'%20as%20mytable%3B%0Aselect%20*%20from%20mytable%20where%20symbol%3D'%5E" + this.symbolIndex + "'%3B&format=json&diagnostics=true&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback=";
 
+        String url = "";
+        try {
+             url = "https://query.yahooapis.com/v1/public/yql?q=use%20'https%3A%2F%2Fraw.githubusercontent.com%2FSoniaDjebali%2FFinanceMif1%2Fmaster%2Fyahoo.finance.components.xml'%20as%20mytable%3B%0Aselect%20*%20from%20mytable%20where%20symbol%3D'" + URLEncoder.encode(symbolIndex, "UTF-8") + "'%3B&format=json&diagnostics=true&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback=";
+        }
+        catch (UnsupportedEncodingException e) {
+        }
         JSONObject obj = new JSONObject(httsGetMethodJson(url));
 
         List<String> list = new ArrayList<String>();
@@ -119,7 +126,7 @@ public class ControllerGestionIndice {
             double volatility = 0;                //to complete
             double MarketCap = 0;
             if (!array.getJSONObject(i).isNull("MarketCapitalization"))
-                MarketCap = Double.parseDouble(array.getJSONObject(i).getString("MarketCapitalization").replaceAll("B",""))*1000000000;//car string termine par B comme billion
+                MarketCap = Double.parseDouble(array.getJSONObject(i).getString("MarketCapitalization").replaceAll("B",""))*1000000000;        //car string termine par B comme billion
             else
             {
                 MarketCap = ControllerGestionAction.MarketCapt(symbol);
@@ -147,31 +154,37 @@ public class ControllerGestionIndice {
 
     public void IndexCreation()
     {
-        String HttpRequest = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22%5E"+symbolIndex+"%22)&format=json&diagnostics=true&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback=";
-        JSONObject obj = new JSONObject(httsGetMethodJson(HttpRequest));
-        JSONObject query = obj.getJSONObject("query");
-        JSONObject results = query.getJSONObject("results");
-        JSONObject array = results.getJSONObject("quote");
-        String symbol = array.getString("symbol");
-        String Name = array.getString("Name");
-        String ISIN = array.getString("Name");
-        double prix = (array.getDouble("LastTradePriceOnly"));
-        int volume = array.getInt("Volume");
-        String[] rawdate = array.getString("LastTradeDate").split("/");
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Integer.parseInt(rawdate[2]), Integer.parseInt(rawdate[0]), Integer.parseInt(rawdate[1]));
-        Date date = calendar.getTime();
-
-        double volatility = 0;                //to complete
-        double MarketCap = 0;
-      //  if (!array.getJSONObject(i).isNull("MarketCapitalization"))
-
-        this.indice = new Indice(Name,ISIN,prix,volume,date,symbol);
-        for (Action a : listAction)
-        {
-            this.indice.addACtion(a,a.GetWeight(symbolIndex));
+        String HttpRequest = "";
+        try {
+             HttpRequest = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22" + URLEncoder.encode(symbolIndex, "UTF-8")  + "%22)&format=json&diagnostics=true&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback=";
         }
-    }
+        catch (UnsupportedEncodingException e) {
+        }
+            JSONObject obj = new JSONObject(httsGetMethodJson(HttpRequest));
+            JSONObject query = obj.getJSONObject("query");
+            JSONObject results = query.getJSONObject("results");
+            JSONObject array = results.getJSONObject("quote");
+            String symbol = array.getString("symbol");
+            String Name = array.getString("Name");
+            String ISIN = array.getString("Name");
+            double prix = (array.getDouble("LastTradePriceOnly"));
+            int volume = array.getInt("Volume");
+            String[] rawdate = array.getString("LastTradeDate").split("/");
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Integer.parseInt(rawdate[2]), Integer.parseInt(rawdate[0]), Integer.parseInt(rawdate[1]));
+            Date date = calendar.getTime();
+
+            double volatility = 0;                //to complete
+            double MarketCap = 0;
+            //  if (!array.getJSONObject(i).isNull("MarketCapitalization"))
+
+            this.indice = new Indice(Name,ISIN,prix,volume,date,symbol);
+            for (Action a : listAction)
+            {
+                this.indice.addACtion(a,a.GetWeight(symbolIndex));
+            }
+        }
+
 
     public Indice GetIndex()
     {

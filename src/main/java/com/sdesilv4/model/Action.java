@@ -14,20 +14,20 @@ public class Action extends Actif{
     private double volatility;
     private double cap_boursiere;
     private double PER;
-    Map<String, Object> dictionary;
+    Map<String, Object> dictionaryIndiceWeight;
 
     public Action(String _nom, String _codeISIN, double _prix, long _volume, Date _date, String _symbol, double _volatility, double _cap_boursiere, double _PER) {
         super(_nom, _codeISIN, _prix, _volume, _date, _symbol);
         this.volatility = _volatility;
         this.cap_boursiere = _cap_boursiere;
         this.PER = _PER;
-        dictionary = new HashMap<String, Object>();
+        dictionaryIndiceWeight = new HashMap<String, Object>();
 
     }
 
     public Map<String, Object> getdictionary()
     {
-        return this.dictionary;
+        return this.dictionaryIndiceWeight;
     }
 
     public double getVolatility()
@@ -47,12 +47,12 @@ public class Action extends Actif{
 
     public void addIndiceWeight(String indexSymbol, double p)
     {
-        dictionary.put(indexSymbol, p);
+        dictionaryIndiceWeight.put(indexSymbol, p);
     }
 
     public double GetWeight(String  indexSymbol)
     {
-        return new Double(dictionary.get(indexSymbol).toString());
+        return new Double(dictionaryIndiceWeight.get(indexSymbol).toString());
     }
 
     public String toString()
