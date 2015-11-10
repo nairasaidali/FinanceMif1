@@ -19,8 +19,8 @@ import javax.swing.JFrame;
 
 public class FinanceApp {
     public static void main(String[] args) {
-
-        //***** Cr�ation *****//
+        Fenetre mainFenetre = new Fenetre();
+        /*
         //Cr�er une fen�tre
         JFrame fenetre = new JFrame();
         //Cr�er une ComboBox pour Action et Indice
@@ -53,7 +53,7 @@ public class FinanceApp {
 
         JPanel top = new JPanel();
 
-        //****** Insertion *****//
+
         //Insertion du Label
         top.add(label);
         //Insertion de la ComboBox
@@ -66,7 +66,7 @@ public class FinanceApp {
         fenetre.setContentPane(container);
         fenetre.setVisible(true);
 
-        //***** Modification Taille *****//
+
         //Taille de la ComboBox
         comboBoxCACSBF.setPreferredSize(new Dimension(110, 20));
         //Taille Bouton
@@ -97,7 +97,7 @@ public class FinanceApp {
 
         // Couleur du tableau
         tableauAction.setBackground(Color.white);
-        fenetre.setTitle("Recapitulatif Actions");
+        fenetre.setTitle("Recapitulatif Actions");*/
 
     }
 }
