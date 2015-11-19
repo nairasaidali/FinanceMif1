@@ -4,12 +4,10 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.sdesilv4.model.Action;
 import com.sdesilv4.model.Indice;
+import org.bson.BsonArray;
 import org.bson.Document;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
@@ -106,7 +104,43 @@ public class MongoDBClient {
 
 
     }
+    public ArrayList<Action> GetAction_Indice(final String indice_symbole) // tout les actions liés à un indice
+    {
+        final ArrayList<Action> ActionList=new ArrayList<Action>();
 
+        MongoCollection coll = db.getCollection("action");
+        String filter= "indexWeight."+indice_symbole+".symbol";
+        FindIterable<Document> g = coll.find(new Document(filter,indice_symbole ));
+
+        g.forEach(new Block<Document>() {
+            @Override
+            public void apply(final Document document) {
+
+
+                String name = (String) document.get("name");
+                String codeISIN = (String) document.get("codeISIN");
+                Double prix = (Double) document.get("prix");
+                Date date = (Date) document.get("date");
+                Long volume = (Long) document.get("volume");
+                Double volatility = (Double) document.get("volatility");
+                Double cap_boursiere = (Double) document.get("cap_boursiere");
+                Double PER = (Double) document.get("PER");
+
+                Action act = new Action(name, codeISIN, prix, volume, date,indice_symbole, volatility, cap_boursiere, PER);
+                ActionList.add(act);
+
+            }
+        });
+        //Affichage si besoin
+        /*System.out.println("Nombre d'action "+ActionList.size());
+        for(Action item : ActionList)
+        {
+            System.out.println("Tous les actions du "+ActionList.size());
+            System.out.println(item.toString());
+        }*/
+        return  ActionList;
+
+    }
     public Action FindAction(String CodeISIN) {
         MongoCollection coll = db.getCollection("action");
 
@@ -126,6 +160,8 @@ public class MongoDBClient {
     }
 
 
+
+
     public Indice FindIndice(String CodeISIN) {
         MongoCollection coll = db.getCollection("indice");
 
@@ -141,19 +177,6 @@ public class MongoDBClient {
         return ind;
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public String UpdateAction(Action act) {
 

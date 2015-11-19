@@ -89,7 +89,7 @@ public class Fenetre extends JFrame{
                 // action si CAC 40
 
                 // par exemple on veut afficher le tableau dans une nouvelle fenetre
-                actions.setVisible(true);
+              //  actions.setVisible(true);
 
             }else if(choixCACSBF.getSelectedItem().toString() == "SBF 120"){
                 // action si SBF 120
