@@ -113,7 +113,7 @@ public class MongoDBClient {
         FindIterable<Document> g = coll.find(new Document(filter,indice_symbole ));
 
         g.forEach(new Block<Document>() {
-            @Override
+
             public void apply(final Document document) {
 
 
