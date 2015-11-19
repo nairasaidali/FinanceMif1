@@ -80,6 +80,22 @@ public class Fenetre extends JFrame{
         this.setVisible(true);
     }
 
+    // Action au déclenchement d'un evenement
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()==boutonValider)
+            if(choixCACSBF.getSelectedItem().toString() == "Choisir l'indice"){
+                JOptionPane.showMessageDialog(this,"Veuillez choisir un indice.", "Indice non renseigne", JOptionPane.WARNING_MESSAGE);
+            }else if(choixCACSBF.getSelectedItem().toString() == "CAC 40"){
+                // action si CAC 40
+
+                // par exemple on veut afficher le tableau dans une nouvelle fenetre
+                actions.setVisible(true);
+
+            }else if(choixCACSBF.getSelectedItem().toString() == "SBF 120"){
+                // action si SBF 120
+            }
+    }
+
     class BoutonValiderCAC implements ActionListener {
         public void actionPerformed(ActionEvent argBouton) {
             if (choixCACSBF.getSelectedIndex() == 0 && choixActionIndice.getSelectedIndex() == 0) {
