@@ -1,19 +1,18 @@
 package com.sdesilv4.Controller;
-import com.mongodb.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import com.sdesilv4.model.Action;
 import com.sdesilv4.model.Indice;
-import org.bson.BsonArray;
 import org.bson.Document;
 
-import java.util.*;
-
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoDatabase;
-import static java.util.Arrays.asList;
-
-import javax.print.Doc;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -53,6 +52,7 @@ public class MongoDBClient {
                     .append("cap_boursiere", act.getCapBoursiere())
                     .append("PER", act.getPER())
                     .append("indexWeight", (indexWeight));
+
 
 
             coll.insertOne(doc);
