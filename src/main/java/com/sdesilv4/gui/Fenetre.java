@@ -101,6 +101,9 @@ public class Fenetre extends JFrame{
             if (choixCACSBF.getSelectedIndex() == 0 && choixActionIndice.getSelectedIndex() == 0) {
                 new FenetreTableauAction().setVisible(true);
             }
+            else if (choixCACSBF.getSelectedIndex() == 0 && choixActionIndice.getSelectedIndex() == 1) {
+                new TableauIndice().setVisible(true);
+            }
         }
     }
 
