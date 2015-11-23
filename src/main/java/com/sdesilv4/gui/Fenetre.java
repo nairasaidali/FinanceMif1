@@ -46,13 +46,23 @@ public class Fenetre extends JFrame{
         this.setLayout(new BorderLayout());
 
         JPanTitle.setVisible(true);
-        jPan.add(labelChoix);
-        jPan.add(choixCACSBF);
 
 
-        setLayout(new FlowLayout());
+        //Placer composants dans une grid
+        this.setLayout(new GridLayout(1, 4, 20, 50));
+
+        this.getContentPane().add(labelChoix);
+        this.getContentPane().add(choixCACSBF);
+        this.getContentPane().add(choixActionIndice);
+        this.getContentPane().add(boutonValider);
+
+        labelChoix.setHorizontalAlignment(javax.swing.SwingConstants.CENTER); // Centrer le texte
+
+        this.setVisible(true);
+
+        //setLayout(new FlowLayout());
         //jPan2.add(labelChoix2);
-        jPan2.add(choixActionIndice);
+        //jPan2.add(choixActionIndice);
         //Définir taille
         choixCACSBF.setPreferredSize(new Dimension(70, 20));
         choixActionIndice.setPreferredSize(new Dimension(70, 20));
@@ -64,18 +74,18 @@ public class Fenetre extends JFrame{
         choixActionIndice.addItem("Indice");
 
         //Ajouter les boutons aux JPanel
-        jPan3.add(boutonValider);
+        //jPan3.add(boutonValider);
 
         //Positionner les lignes en colonne
-        jPan4.add(jPan);
-        jPan4.add(jPan2);
-        jPan4.add(jPan3);
+        //jPan4.add(jPan);
+        //jPan4.add(jPan2);
+        //jPan4.add(jPan3);
 
         //Colorer le bouton en blanc
         boutonValider.setBackground(Color.WHITE);
         boutonValider.addActionListener(new BoutonValiderCAC());
 
-        this.getContentPane().add(jPan4);
+        //this.getContentPane().add(jPan4);
 
         this.setVisible(true);
     }
