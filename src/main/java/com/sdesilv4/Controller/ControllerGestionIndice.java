@@ -116,7 +116,7 @@ public class ControllerGestionIndice {
             String Name = array.getJSONObject(i).getString("Name");
             String ISIN = array.getJSONObject(i).getString("Name");
             double prix = (array.getJSONObject(i).getDouble("LastTradePriceOnly"));
-            int volume = array.getJSONObject(i).getInt("Volume");
+            long volume = array.getJSONObject(i).getInt("Volume");
             String[] rawdate = array.getJSONObject(i).getString("LastTradeDate").split("/");
 
             Calendar calendar = Calendar.getInstance();
@@ -128,11 +128,9 @@ public class ControllerGestionIndice {
             if (!array.getJSONObject(i).isNull("MarketCapitalization"))
                 MarketCap = Double.parseDouble(array.getJSONObject(i).getString("MarketCapitalization").replaceAll("B",""))*1000000000;        //car string termine par B comme billion
             else
-            {
                 MarketCap = ControllerGestionAction.MarketCapt(symbol);
-            }
 
-            double PER = 0;                  //Je ne sais pas ce que c'est
+            double PER = (array.getJSONObject(i).getDouble("PERatio"));
 
             this.listAction.add(new Action(Name,ISIN,prix,volume,date,symbol,volatility,MarketCap,PER));
         }

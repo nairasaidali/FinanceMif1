@@ -7,9 +7,7 @@ import com.sdesilv4.Controller.MongoDBClient;
  * Created by Nicolas on 03/11/15.
  */
 public class Main {
-    public static void main(String[] args)
-    {
-
+    public static void main(String[] args){
         ControllerGestionIndice CGi = new ControllerGestionIndice("^FCHI");      //Symbole sans le ^ devant
         System.out.println(CGi.GetIndex().toString());
 
@@ -17,6 +15,5 @@ public class Main {
         tst.AddIndice(CGi.GetIndex());
         tst.CloseClientConnection();
         // Commande Bash        mongo ds051524.mongolab.com:51524/actif -u groupeMif1 -p groupeMif1
-
     }
 }

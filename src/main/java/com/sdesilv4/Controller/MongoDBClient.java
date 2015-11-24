@@ -67,7 +67,7 @@ public class MongoDBClient {
         for (Action a : collection) {
             List<Document> indexWeight = new ArrayList<Document>();
             for (Map.Entry<String, Object> entry : a.getdictionary().entrySet()) {
-                indexWeight.add(new Document(entry.getKey(), new Document("symbol", entry.getKey()).append("weight", entry.getValue())));
+                indexWeight.add(new Document("symbol", entry.getKey()).append("weight", entry.getValue()));
             }
             Document doc = new Document().append("name", a.getNom())
                     .append("codeISIN", a.getCodeISIN())
@@ -214,6 +214,6 @@ public class MongoDBClient {
 
 
 
-        return "indice bien modifier";
+        return "indice bien modifié";
     }
 }
