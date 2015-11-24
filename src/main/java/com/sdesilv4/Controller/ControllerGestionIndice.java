@@ -130,7 +130,13 @@ public class ControllerGestionIndice {
             else
                 MarketCap = ControllerGestionAction.MarketCapt(symbol);
 
-            double PER = (array.getJSONObject(i).getDouble("PERatio"));
+            double PER = 0;
+
+            if (!array.getJSONObject(i).isNull("PERatio"))
+            {
+                 PER = (array.getJSONObject(i).getDouble("PERatio"));
+
+            }
 
             this.listAction.add(new Action(Name,ISIN,prix,volume,date,symbol,volatility,MarketCap,PER));
         }
