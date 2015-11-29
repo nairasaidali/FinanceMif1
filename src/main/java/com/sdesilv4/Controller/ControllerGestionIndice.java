@@ -114,9 +114,9 @@ public class ControllerGestionIndice {
 
             String symbol = array.getJSONObject(i).getString("symbol");
             String Name = array.getJSONObject(i).getString("Name");
-            String ISIN = array.getJSONObject(i).getString("Name");
+            String ISIN = "Not available in Yahoo API";
             double prix = (array.getJSONObject(i).getDouble("LastTradePriceOnly"));
-            long volume = array.getJSONObject(i).getInt("Volume");
+            double volume = array.getJSONObject(i).getDouble("Volume");
             String[] rawdate = array.getJSONObject(i).getString("LastTradeDate").split("/");
 
             Calendar calendar = Calendar.getInstance();
@@ -153,7 +153,6 @@ public class ControllerGestionIndice {
         {
             a.addIndiceWeight(symbolIndex,a.getCapBoursiere()/globalMarketCapIndex);
         }
-//essai github
     }
 
     public void IndexCreation()
@@ -171,9 +170,9 @@ public class ControllerGestionIndice {
             JSONObject array = results.getJSONObject("quote");
             String symbol = array.getString("symbol");
             String Name = array.getString("Name");
-            String ISIN = array.getString("Name");
+            String ISIN = "Not available in Yahoo API";
             double prix = (array.getDouble("LastTradePriceOnly"));
-            int volume = array.getInt("Volume");
+        double volume = array.getDouble("Volume");
             String[] rawdate = array.getString("LastTradeDate").split("/");
             Calendar calendar = Calendar.getInstance();
             calendar.set(Integer.parseInt(rawdate[2]), Integer.parseInt(rawdate[0]), Integer.parseInt(rawdate[1]));
@@ -182,6 +181,7 @@ public class ControllerGestionIndice {
             double volatility = 0;                //to complete
             double MarketCap = 0;
             //  if (!array.getJSONObject(i).isNull("MarketCapitalization"))
+
 
             this.indice = new Indice(Name,ISIN,prix,volume,date,symbol);
             for (Action a : listAction)

@@ -8,7 +8,7 @@ import java.util.List;
 public class Indice extends Actif {
  private ArrayList<Action> collectionIndicePonderes;
 
- public Indice(String _nom, String _codeISIN, double _prix, long _volume, Date _date, String _symbol) {
+ public Indice(String _nom, String _codeISIN, double _prix, double _volume, Date _date, String _symbol) {
   super(_nom, _codeISIN, _prix, _volume, _date, _symbol);
   this.collectionIndicePonderes = new ArrayList<Action>();
  }
