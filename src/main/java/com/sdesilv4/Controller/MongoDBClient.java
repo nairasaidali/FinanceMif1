@@ -104,7 +104,7 @@ public class MongoDBClient {
 
 
     }
-    public ArrayList<Action> GetAction_Indice(final String indice_symbole) // tout les actions liés à un indice
+    public ArrayList<Action> GetAction_Indice(final String indice_symbole)    // toutes les actions liées à un indice
     {
         final ArrayList<Action> ActionList=new ArrayList<Action>();
 
@@ -132,12 +132,12 @@ public class MongoDBClient {
             }
         });
         //Affichage si besoin
-        /*System.out.println("Nombre d'action "+ActionList.size());
+        System.out.println("Nombre d'action "+ActionList.size());
         for(Action item : ActionList)
         {
             System.out.println("Tous les actions du "+ActionList.size());
             System.out.println(item.toString());
-        }*/
+        }
         return  ActionList;
 
     }
