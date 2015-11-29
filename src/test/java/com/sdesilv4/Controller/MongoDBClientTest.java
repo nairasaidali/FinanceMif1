@@ -30,9 +30,8 @@ public class MongoDBClientTest extends TestCase {
 
        public void testFindIndice() throws Exception {
         MongoDBClient tst = new MongoDBClient("mongodb://groupeMif1:groupeMif1@ds051524.mongolab.com:51524/actif");
-        Indice inde=tst.FindIndice("Not available in Yahoo API");
+        Indice inde=tst.FindIndice("^FCHI");
 
-        assertEquals("Not available in Yahoo API",inde.getCodeISIN());
-           assertEquals(4930.14,inde.getPrix());
+        assertTrue(inde.getPrix()<8000&&inde.getPrix()>2000);
     }
 }

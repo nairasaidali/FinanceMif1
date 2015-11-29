@@ -95,6 +95,7 @@ public class MongoDBClient {
             }
 
             Document doc = new Document().append("name", ind.getNom())
+                    .append("symbol" , ind.getSymbol())
                     .append("codeISIN", ind.getCodeISIN())
                     .append("prix", ind.getPrix())
                     .append("date", ind.getDate())
@@ -165,10 +166,10 @@ public class MongoDBClient {
 
 
 
-    public Indice FindIndice(String CodeISIN) {
+    public Indice FindIndice(String _symbol) {
         MongoCollection coll = db.getCollection("indice");
 
-        FindIterable<Document> g = coll.find(new Document("codeISIN", CodeISIN));
+        FindIterable<Document> g = coll.find(new Document("symbol", _symbol));
         String name = (String) g.first().get("name");
         String codeISIN = (String) g.first().get("codeISIN");
         Double prix = (Double) g.first().get("prix");
