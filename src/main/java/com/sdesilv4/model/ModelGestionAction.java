@@ -1,4 +1,4 @@
-package com.sdesilv4.Controller;
+package com.sdesilv4.model;
 
 import com.sdesilv4.model.Action;
 
@@ -13,11 +13,11 @@ import java.util.Scanner;
 /**
  * Created by Nicolas on 07/11/15.
  */
-public class ControllerGestionAction {
+public class ModelGestionAction {
     private Action action;
     private String symbolAction;
 
-    public ControllerGestionAction(String _symbol)
+    public ModelGestionAction(String _symbol)
     {
         this.symbolAction = _symbol;
         action = null;

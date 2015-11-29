@@ -1,7 +1,5 @@
-package com.sdesilv4.Controller;
+package com.sdesilv4.model;
 
-import com.sdesilv4.model.Action;
-import com.sdesilv4.model.Indice;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -20,12 +18,12 @@ import java.util.*;
  */
 
 
-public class ControllerGestionIndice {
+public class ModelGestionIndiceFromYahoo {
     private Indice indice;
     private String symbolIndex;
     private List<Action> listAction;
 
-    public ControllerGestionIndice(String _symbolIndex)
+    public ModelGestionIndiceFromYahoo(String _symbolIndex)
     {
         this.indice = null;
         this.symbolIndex = _symbolIndex;
@@ -36,7 +34,7 @@ public class ControllerGestionIndice {
         IndexCreation();
     }
 
-    public String httsGetMethodJson(String query)
+    public String httsGetMethodJson(String query)            //Methode pour faire un HTTP get d'une URL
     {
         try {
             URL obj = new URL(query);
@@ -67,7 +65,7 @@ public class ControllerGestionIndice {
     }
 
 
-    public List<String> getListOfSymbols()
+    public List<String> getListOfSymbols()                           //Méthode permettant de récupérer la liste des symboles d'action de l'indice donné.
     {
 
         String url = "";
@@ -89,7 +87,7 @@ public class ControllerGestionIndice {
         return list;
     }
 
-    public void getListOfActionObjects(List<String> listStocksSymbols)
+    public void getListOfActionObjects(List<String> listStocksSymbols)                                   //Méthode permettant de récupérer la liste des actions récupérées ainsi que leurs propriétées (prix, date, volume,etc) et de les mettre en objets d'actions.
     {
         String requeteStocks ="";
         boolean first = true;
@@ -128,7 +126,7 @@ public class ControllerGestionIndice {
             if (!array.getJSONObject(i).isNull("MarketCapitalization"))
                 MarketCap = Double.parseDouble(array.getJSONObject(i).getString("MarketCapitalization").replaceAll("B",""))*1000000000;        //car string termine par B comme billion
             else
-                MarketCap = ControllerGestionAction.MarketCapt(symbol);
+                MarketCap = ModelGestionAction.MarketCapt(symbol);
 
             double PER = 0;
 
@@ -142,7 +140,7 @@ public class ControllerGestionIndice {
         }
     }
 
-    public void ReparitionDesPoids()
+    public void ReparitionDesPoids()                  //Les poids des actions n'étant pas renseignés directement dans l'API Finance Yahoo, nous devons les calculer manuellement..
     {
         double globalMarketCapIndex = 0;
         for (Action a : listAction)
@@ -155,7 +153,7 @@ public class ControllerGestionIndice {
         }
     }
 
-    public void IndexCreation()
+    public void IndexCreation()                //Création de l'indice final
     {
         String HttpRequest = "";
         try {
@@ -178,10 +176,8 @@ public class ControllerGestionIndice {
             calendar.set(Integer.parseInt(rawdate[2]), Integer.parseInt(rawdate[0]), Integer.parseInt(rawdate[1]));
             Date date = calendar.getTime();
 
-            double volatility = 0;                //to complete
-            double MarketCap = 0;
-            //  if (!array.getJSONObject(i).isNull("MarketCapitalization"))
-
+            double volatility = -1;                //to complete
+            double MarketCap = -1;
 
             this.indice = new Indice(Name,ISIN,prix,volume,date,symbol);
             for (Action a : listAction)

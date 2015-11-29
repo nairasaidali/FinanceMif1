@@ -88,7 +88,7 @@ public class MongoDBClient {
                 MongoCollection coll = db.getCollection("indice");
             List<Document> listSymbolAction = new ArrayList<Document>();
             for (Action a : ind.GetCollectionAction()) {
-                listSymbolAction.add(new Document("symbol", a.getSymbol()).append("name", a.getNom()).append("price", a.getPrix()));
+                listSymbolAction.add(new Document("symbol", a.getSymbol()).append("name", a.getNom()).append("price", a.getPrix()).append("date",a.getDate()));
             }
 
             Document doc = new Document().append("name", ind.getNom())
@@ -196,7 +196,7 @@ public class MongoDBClient {
 
 
 
-        return "action bien modifier";
+        return "action bien modifié";
     }
 
     public String UpdateIndice(Indice ind) {
