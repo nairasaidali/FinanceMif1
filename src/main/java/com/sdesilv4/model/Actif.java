@@ -39,4 +39,6 @@ abstract class Actif {
     public String getSymbol(){
         return this.symbol;
     }
+
+
 }

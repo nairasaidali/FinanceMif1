@@ -71,5 +71,19 @@ public class Action extends Actif{
 
         return chaine;
     }
+
+    @Override
+    public boolean equals(Object o){
+        if(o instanceof Action){
+            Action toCompare = (Action) o;
+            return this.getSymbol().equals(toCompare.getSymbol());
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return getSymbol().hashCode();
+    }
 }
 
