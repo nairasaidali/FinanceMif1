@@ -9,6 +9,7 @@ import com.sdesilv4.model.Action;
 import com.sdesilv4.model.Indice;
 import org.bson.Document;
 
+import java.awt.geom.Arc2D;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -149,7 +150,7 @@ public class MongoDBClient {
         String codeISIN = (String) g.first().get("codeISIN");
         Double prix = (Double) g.first().get("prix");
         Date date = (Date) g.first().get("date");
-        Long volume = (Long) g.first().get("volume");
+        Double volume = (Double) g.first().get("volume");
         Double volatility = (Double) g.first().get("volatility");
         Double cap_boursiere = (Double) g.first().get("cap_boursiere");
         Double PER = (Double) g.first().get("PER");
@@ -170,7 +171,7 @@ public class MongoDBClient {
         String codeISIN = (String) g.first().get("codeISIN");
         Double prix = (Double) g.first().get("prix");
         Date date = (Date) g.first().get("date");
-        Long volume = (Long) g.first().get("volume");
+        Double volume = (Double) g.first().get("volume");
         Double volatility = (Double) g.first().get("volatility");
 
         Indice ind = new Indice(name, codeISIN, prix, volume, date, "symbol !! "); //symbol a compléter !!
