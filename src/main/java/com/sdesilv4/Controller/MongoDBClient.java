@@ -45,6 +45,7 @@ public class MongoDBClient {
                 indexWeight.add(new Document(entry.getKey(), new Document("symbol", entry.getKey()).append("weight", entry.getValue())));
             }
             Document doc = new Document().append("name", act.getNom())
+                    .append("symbol", act.getSymbol())
                     .append("codeISIN", act.getCodeISIN())
                     .append("prix", act.getPrix())
                     .append("date", act.getDate())
@@ -71,6 +72,7 @@ public class MongoDBClient {
                 indexWeight.add(new Document("symbol", entry.getKey()).append("weight", entry.getValue()));
             }
             Document doc = new Document().append("name", a.getNom())
+                    .append("symbol", a.getSymbol())
                     .append("codeISIN", a.getCodeISIN())
                     .append("prix", a.getPrix())
                     .append("date", a.getDate())
@@ -142,10 +144,10 @@ public class MongoDBClient {
         return  ActionList;
 
     }
-    public Action FindAction(String CodeISIN) {
+    public Action FindAction(String _symbol) {
         MongoCollection coll = db.getCollection("action");
 
-        FindIterable<Document> g = coll.find(new Document("codeISIN", CodeISIN));
+        FindIterable<Document> g = coll.find(new Document("symbol", _symbol));
         String name = (String) g.first().get("name");
         String codeISIN = (String) g.first().get("codeISIN");
         Double prix = (Double) g.first().get("prix");
