@@ -153,7 +153,7 @@ public class ControllerGestionIndice {
         {
             a.addIndiceWeight(symbolIndex,a.getCapBoursiere()/globalMarketCapIndex);
         }
-
+//essai github
     }
 
     public void IndexCreation()
