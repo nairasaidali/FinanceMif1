@@ -109,7 +109,7 @@ public class MongoDBClient {
         final ArrayList<Action> ActionList=new ArrayList<Action>();
 
         MongoCollection coll = db.getCollection("action");
-        String filter= "indexWeight."+indice_symbole+".symbol";
+        String filter= "indexWeight.symbol";
         FindIterable<Document> g = coll.find(new Document(filter,indice_symbole ));
 
         g.forEach(new Block<Document>() {
@@ -121,21 +121,21 @@ public class MongoDBClient {
                 String codeISIN = (String) document.get("codeISIN");
                 Double prix = (Double) document.get("prix");
                 Date date = (Date) document.get("date");
-                Long volume = (Long) document.get("volume");
+                Double volume = (Double) document.get("volume");
                 Double volatility = (Double) document.get("volatility");
                 Double cap_boursiere = (Double) document.get("cap_boursiere");
                 Double PER = (Double) document.get("PER");
 
-                Action act = new Action(name, codeISIN, prix, volume, date,indice_symbole, volatility, cap_boursiere, PER);
+                Action act = new Action(name, codeISIN, prix, volume, date, indice_symbole, volatility, cap_boursiere, PER);
                 ActionList.add(act);
 
             }
         });
         //Affichage si besoin
-        System.out.println("Nombre d'action "+ActionList.size());
+        System.out.println("Tous les actions du "+indice_symbole);
+
         for(Action item : ActionList)
         {
-            System.out.println("Tous les actions du "+ActionList.size());
             System.out.println(item.toString());
         }
         return  ActionList;
