@@ -47,7 +47,6 @@ public class Fenetre extends JFrame{
 
         JPanTitle.setVisible(true);
 
-
         //Placer composants dans une grid
         this.setLayout(new GridLayout(1, 4, 20, 50));
 
@@ -60,9 +59,6 @@ public class Fenetre extends JFrame{
 
         this.setVisible(true);
 
-        //setLayout(new FlowLayout());
-        //jPan2.add(labelChoix2);
-        //jPan2.add(choixActionIndice);
         //Définir taille
         choixCACSBF.setPreferredSize(new Dimension(70, 20));
         choixActionIndice.setPreferredSize(new Dimension(70, 20));
@@ -73,21 +69,19 @@ public class Fenetre extends JFrame{
         choixActionIndice.addItem("Action");
         choixActionIndice.addItem("Indice");
 
-        //Ajouter les boutons aux JPanel
-        //jPan3.add(boutonValider);
-
-        //Positionner les lignes en colonne
-        //jPan4.add(jPan);
-        //jPan4.add(jPan2);
-        //jPan4.add(jPan3);
-
         //Colorer le bouton en blanc
-        boutonValider.setBackground(Color.WHITE);
+        //boutonValider.setBackground(Color.WHITE);
         boutonValider.addActionListener(new BoutonValiderCAC());
 
         //this.getContentPane().add(jPan4);
 
         this.setVisible(true);
+    }
+
+    // Pour créer une bordure entre la fenetre et la GridLayout
+    public Insets getInsets() {
+        Insets normal = super.getInsets();
+        return new Insets(normal.top +10, normal.left + 10, normal.bottom + 20, normal.right + 20);
     }
 
     // Action au déclenchement d'un evenement
