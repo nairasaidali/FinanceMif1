@@ -7,9 +7,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/java/com/sdesilv4/Controller" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/java/com/sdesilv4/model" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -26,7 +23,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/2eme ESILV/MongoDB/mongo-java-driver-3.1.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../2eme ESILV/MongoDB/mongo-java-driver-3.1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

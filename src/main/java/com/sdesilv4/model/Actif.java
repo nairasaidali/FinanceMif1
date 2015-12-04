@@ -21,6 +21,11 @@ abstract class Actif {
         this.symbol = _symbol;
     }
 
+    public Actif()
+    {
+
+    }
+
     public String getNom(){
         return this.nom;
     }

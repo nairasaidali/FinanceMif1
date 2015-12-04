@@ -170,7 +170,7 @@ public class ModelGestionIndiceFromYahoo {
             String Name = array.getString("Name");
             String ISIN = "Not available in Yahoo API";
             double prix = (array.getDouble("LastTradePriceOnly"));
-        double volume = array.getDouble("Volume");
+            double volume = array.getDouble("Volume");
             String[] rawdate = array.getString("LastTradeDate").split("/");
             Calendar calendar = Calendar.getInstance();
             calendar.set(Integer.parseInt(rawdate[2]), Integer.parseInt(rawdate[0]), Integer.parseInt(rawdate[1]));

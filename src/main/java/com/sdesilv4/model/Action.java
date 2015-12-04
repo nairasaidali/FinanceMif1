@@ -25,6 +25,11 @@ public class Action extends Actif{
 
     }
 
+    public Action()
+    {
+
+    }
+
     public Map<String, Object> getdictionary()
     {
         return this.dictionaryIndiceWeight;
@@ -61,14 +66,14 @@ public class Action extends Actif{
         chaine =  "-- L'action est caracterisée par:" ;
         chaine += "\n";
         chaine += "- Nom: " + this.getNom();
-        // chaine += "- Poids: " + this.poids;
         chaine += "\n";
         chaine += "- Volatilite: " + this.volatility;
         chaine += "\n";
         chaine += "- Capitalisation boursiere: " + this.cap_boursiere;
         chaine += "\n";
         chaine += "- PER: " + this.PER;
-
+        chaine += "\n";
+        chaine += "- Prix: " + this.getPrix();
         return chaine;
     }
 
@@ -85,5 +90,6 @@ public class Action extends Actif{
     public int hashCode() {
         return getSymbol().hashCode();
     }
+
 }
 

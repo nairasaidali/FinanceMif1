@@ -40,6 +40,47 @@ public class Indice extends Actif {
   return out;
  }
 
+    public Action findLessVolatileActionOfIndex()
+  {
+   double min_volatily = this.collectionIndicePonderes.get(0).getVolatility() ;
+   Action a_min = new Action() ;
+
+   for(Action a: this.collectionIndicePonderes)
+   {
+        if(a.getVolatility() <= min_volatily)
+        {
+           min_volatily = a.getVolatility();
+           a_min = a;
+        }
+   }
+
+     return a_min;
+  }
+
+    public Action findMostVolatileActionOfIndex()
+ {
+  double max_volatily = 0 ;
+  Action a_max = new Action() ;
+
+  for(Action a: this.collectionIndicePonderes)
+  {
+   if(a.getVolatility() >= max_volatily)
+   {
+     max_volatily = a.getVolatility();
+     a_max = a;
+   }
+  }
+
+  return a_max;
+ }
+
+    /* Remarque */
+
+    //Pour le moment, ces deux dernières fonctions renvoient l'action VIVENDI car il s'agit de la dernière dans l'index du CAC 40
+    //et toutes les volatilités étant à 0, la condition d'inégalité est toujours vérifiée et chaque action est à son tour stockée comme ayant la volatilité min (resp. max)
+    //il faut en fait régler le problème dans la fonction getListOfActionObjects dans la classe ModelGestionIndiceFromYahoo.java
+    //qui initialise la volatilité à 0 et ne la récupère pas encore (à noter: la volatilité correspond à beta sur yahoo.finance et
+    //l'info semble manquante pour les actions relatives au CAC 40 mais disponible pour l'indice américain NASDAQ Composite par exemple)
 }
 
 
